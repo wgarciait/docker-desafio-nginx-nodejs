@@ -2,7 +2,9 @@ FROM node:latest
 
 WORKDIR /usr/src/app
 
-RUN npm install mysql2 --save
+COPY package.json .
+
+RUN npm install express --save && npm install mysql2 --save
 
 COPY . .
 

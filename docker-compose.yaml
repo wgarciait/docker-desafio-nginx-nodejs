@@ -9,8 +9,6 @@ services:
     hostname: app
     networks:
       - nginxnet
-    volumes:
-      - ./nodejs:/usr/src/app
     tty: true
     depends_on:
       db:
