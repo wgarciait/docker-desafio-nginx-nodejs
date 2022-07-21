@@ -9,6 +9,8 @@ O retorno da aplicação node.js para o nginx deverá ser:
 
 - Lista de nomes cadastrada no banco de dados.
 
+<hr>
+
 # Executar a aplicação
 ```
 docker-compose up -d --build
@@ -17,3 +19,6 @@ docker-compose up -d --build
 ```
 localhost:8080
 ```
+<hr>
+
+Observação: Projeto desenvolvido no M1 Silicon, a imagem do MySQL corresponde a arquitetura arm64.
