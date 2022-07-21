@@ -13,7 +13,7 @@ O retorno da aplicação node.js para o nginx deverá ser:
 
 # Executar a aplicação
 ```
-docker-compose up -d --build
+docker-compose up
 ```
 # Acessar a aplicação via browser
 ```
