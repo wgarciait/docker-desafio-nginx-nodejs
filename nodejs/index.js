@@ -10,17 +10,33 @@ const config = {
 
 };
 
-const mysql = require('mysql')
+const mysql = require('mysql2')
 const connection = mysql.createConnection(config)
 
-const sql = `INSERT INTO people(name) values('Wellington')`
-connection.query(sql)
-connection.end()
-
 app.get('/', (req, res) => {
-    res.send('<h1>full cycle</h1>')
+    let strNames = ""
+    saveNames()
+    connection.connect(function(err) {
+        connection.query("select * from people", function (err, result) {
+            if (err) throw err;
+            Object.keys(result).forEach(function(key) {
+                strNames += result[key].id + " -> " + result[key].name + "<br>"
+            });
+            res.send('<h1>Full Cycle Rocks!</h1><br>' + strNames)
+        });
+    });
 })
 
 app.listen(port, () => {
     console.log('Rodando na porta', port)
 })
+
+function saveNames() {
+    let names = ["Wellington","Indira","Elio","Sandra","Priscila","Denis"];
+
+    names.forEach(name => {
+        const sql = "INSERT INTO people(name) values('"+name+"')"
+        console.log(sql)
+        connection.query(sql)
+    })
+}
